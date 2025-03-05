@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ffdde1);
+            background-size: 300% 300%;
+            animation: gradient 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 60px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff6b6b, #fc5c7d, #6c5b7b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            font-family: 'Quicksand', sans-serif;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            margin-top: 50px;
+            background: linear-gradient(45deg, #fc5c7d, #6c5b7b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(252, 92, 125, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(252, 92, 125, 0.6);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup .close {
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+            float: right;
+        }
+
+        .love-msg {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9em;
+            color: white;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+            z-index: 1000;
+        }
+        h2{
+            font-weight: lighter;
+            color: aliceblue;
+        }
+        p{
+            text-align: justify;
+            color:#6c5b7b;
+        }
+        h3{
+            color:#fc5c7d;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-transition"></div>
+    <div class="glass-container">
+        <h1 >HAPPY 4TH ANNIVERSARY CHINAMMA</h1>
+        <h2 class="subtitle">Every moment with you is a treasure worth keeping........</h2>
+        <div class="btn-container">
+            <button class="btn" id="showMessage">Show Message 💌</button>
+            <button class="btn">Enter Our Love Story ✨</button>
+        </div>
+        <div class="popup" id="popup">
+            <span class="close" id="closePopup">&times;</span>
+            <h3>MY LOVE</h3>
+            <p>𝙷𝚊𝚙𝚙𝚢 𝟺𝚝𝚑 𝙰𝚗𝚗𝚒𝚟𝚎𝚛𝚜𝚊𝚛𝚢 𝙱𝚊𝚔𝚔𝚊𝚖𝚖𝚊. 𝙼𝚊𝚗𝚊𝚖 𝚔𝚊𝚕𝚒𝚜𝚒 𝚊𝚙𝚙𝚞𝚍𝚎 𝟺 𝚢𝚎𝚊𝚛𝚜 𝚊𝚒𝚙𝚘𝚒𝚗𝚍𝚒 𝚊𝚗𝚝𝚎 𝚗𝚊𝚖𝚖𝚊𝚐𝚊𝚕𝚊𝚝𝚊𝚟𝚊 𝚔𝚊𝚗𝚒 𝚊𝚒𝚙𝚘𝚒𝚗𝚍𝚒. 𝙴𝚍𝚘 𝚘𝚔𝚊 𝚛𝚊𝚗𝚍𝚘𝚖 𝚠𝚎𝚋𝚒𝚗𝚊𝚛 𝚐𝚛𝚘𝚞𝚙 𝚕𝚘 𝚖𝚜𝚐 𝚝𝚑𝚘  𝚝𝚑𝚘 𝚜𝚝𝚊𝚛𝚝 𝚊𝚒𝚗𝚊 𝚖𝚊𝚗𝚊 𝚙𝚊𝚛𝚒𝚌𝚑𝚊𝚢𝚊𝚖 𝚕𝚒𝚏𝚎𝚕𝚘𝚗𝚐 𝚘𝚔𝚊𝚛𝚒𝚝𝚑𝚘 𝚘𝚔𝚊𝚕𝚞 𝚞𝚗𝚍𝚊𝚕𝚒 𝚊𝚗𝚞𝚔𝚞𝚗𝚎 𝚍𝚊𝚔𝚊 𝚟𝚊𝚌𝚑𝚒𝚗𝚍𝚒.𝚆𝚎 𝚑𝚊𝚟𝚎 𝚌𝚘𝚖𝚎 𝚊 𝚕𝚘𝚗𝚐 𝚠𝚊𝚢 𝚎𝚎 𝟺 𝚢𝚎𝚊𝚛𝚜 𝚕𝚘 𝚖𝚊𝚗𝚊𝚔𝚒 𝚐𝚘𝚍𝚊𝚟𝚊𝚕𝚞 𝚊𝚢𝚢𝚊𝚢𝚒 𝚊𝚛𝚐𝚞𝚖𝚎𝚗𝚝𝚜 𝚊𝚢𝚢𝚊𝚢𝚒 𝚔𝚊𝚗𝚒 𝚎𝚙𝚙𝚞𝚍𝚞 𝚗𝚞𝚟𝚟𝚞 𝚗𝚊𝚗𝚗𝚞 𝚟𝚊𝚍𝚒𝚕𝚎𝚍𝚍𝚊𝚖 𝚊𝚗𝚒 𝚖𝚊𝚝𝚛𝚊𝚖 𝚊𝚗𝚞𝚔𝚘𝚕𝚎𝚍𝚞 𝚗𝚎𝚗𝚞 𝚎𝚗𝚝𝚑𝚊 𝚒𝚍𝚒𝚐𝚊 𝚞𝚗𝚗𝚊 𝚎𝚗𝚝𝚑𝚊 𝚗𝚒𝚗𝚗𝚞 𝚋𝚊𝚍𝚑𝚊 𝚙𝚎𝚝𝚝𝚒𝚗𝚊 𝚍𝚊𝚗𝚒𝚔𝚒 𝚋𝚊𝚕𝚎𝚍𝚞 𝚎𝚖𝚘 𝚊𝚗𝚞𝚔𝚞𝚗𝚗𝚊𝚟 𝚝𝚊𝚙𝚙𝚒𝚝𝚎 𝚗𝚎𝚗𝚞 𝚎𝚗𝚍𝚞𝚔𝚞 𝚞𝚗𝚍𝚊𝚕𝚒 𝚒𝚕𝚊 𝚞𝚗𝚗𝚊𝚙𝚙𝚞𝚍𝚞 𝚊𝚗𝚒 𝚊𝚗𝚞𝚔𝚘𝚕𝚎𝚍𝚞. 𝙽𝚎𝚗𝚞 𝚎𝚗𝚗𝚒 𝚜𝚊𝚛𝚕𝚞 𝚗𝚒𝚗𝚗𝚞 𝚟𝚊𝚍𝚍𝚞 𝚊𝚗𝚗𝚊 𝚗𝚊𝚗𝚗𝚞 𝚟𝚊𝚍𝚒𝚕𝚒 𝚗𝚞𝚟𝚟𝚞 𝚎𝚙𝚙𝚞𝚍𝚞 𝚟𝚎𝚕𝚕𝚊𝚕𝚎𝚍𝚞 𝙸'𝚖 𝚐𝚛𝚊𝚝𝚎𝚏𝚞𝚕 𝚝𝚘 𝚑𝚊𝚟𝚎 𝚢𝚘𝚞 𝚒𝚗 𝚖𝚢 𝚕𝚒𝚏𝚎. 𝙾𝚔𝚊𝚝𝚒 𝚖𝚊𝚝𝚛𝚊𝚖 𝚗𝚒𝚓𝚊𝚖 𝚗𝚞𝚟𝚟𝚞 𝚕𝚎𝚔𝚞𝚗𝚍𝚊 𝚞𝚗𝚝𝚎 𝚎𝚎 𝟺 𝚢𝚎𝚊𝚛𝚜 𝚕𝚘 𝚗𝚊𝚔𝚞 𝚎𝚖 𝚊𝚢𝚢𝚎𝚍𝚘 𝚗𝚊𝚔𝚎 𝚝𝚎𝚕𝚒𝚍𝚞 𝚗𝚞𝚟𝚟𝚞 𝚞𝚗𝚗𝚊𝚟 𝚔𝚊𝚋𝚊𝚝𝚝𝚎 𝚗𝚎𝚗𝚞 𝚒𝚙𝚙𝚊𝚝𝚒𝚔𝚒 𝚒𝚗𝚔𝚊 𝚒𝚕𝚊 𝚞𝚗𝚗𝚊 𝚍𝚊𝚗𝚒𝚔𝚒 𝚛𝚎𝚊𝚜𝚘𝚗 𝚖𝚊𝚝𝚛𝚊𝚖 𝚗𝚞𝚟𝚟𝚎 . 𝙷𝚊 𝚗𝚊𝚔𝚞 𝚊𝚢𝚒𝚗𝚊𝚟𝚒 𝚊𝚗𝚝𝚑𝚊 𝚙𝚎𝚍𝚍𝚊𝚟𝚒 𝚔𝚊𝚍𝚞 𝚔𝚊𝚗𝚒 𝚗𝚊𝚔𝚞 𝚊𝚟𝚒 𝚙𝚎𝚍𝚍𝚊𝚟𝚒 𝚊𝚗𝚒 𝚗𝚞𝚟𝚟𝚞 𝚊𝚛𝚍𝚊𝚖 𝚌𝚑𝚎𝚜𝚔𝚘𝚗𝚒 𝚎𝚙𝚙𝚞𝚍𝚞 𝚗𝚊𝚝𝚑𝚘 𝚗𝚎 𝚞𝚗𝚗𝚊𝚟 𝚞𝚗𝚝𝚞𝚗𝚗𝚊𝚟 𝚞𝚗𝚝𝚊𝚟 𝚊𝚗𝚒 𝚔𝚞𝚍𝚊 𝚗𝚊𝚔𝚞 𝚝𝚎𝚕𝚜𝚞. 𝚆𝚒𝚝𝚑 𝚊𝚕𝚕 𝚝𝚑𝚎 𝚝𝚘𝚡𝚒𝚌 𝚙𝚎𝚘𝚙𝚕𝚎 𝚊𝚛𝚘𝚞𝚗𝚍 𝙸 𝚑𝚊𝚟𝚎 𝚏𝚘𝚞𝚗𝚍 𝚊 𝚛𝚊𝚛𝚎 𝙳𝙸𝙰𝙼𝙾𝙽𝙳. 𝙸𝚗 𝚝𝚑𝚎 𝚐𝚎𝚗𝚎𝚛𝚊𝚝𝚒𝚘𝚗 𝚠𝚑𝚎𝚛𝚎 𝚙𝚎𝚘𝚙𝚕𝚎 𝚝𝚑𝚒𝚗𝚔 𝚒𝚏 𝚗𝚘𝚝 𝚑𝚎𝚛 𝚝𝚑𝚎𝚗 𝚘𝚝𝚑𝚎𝚛 𝚢𝚘𝚞 𝚜𝚝𝚘𝚘𝚍 𝚋𝚢 𝚖𝚎 𝚜𝚊𝚢𝚒𝚗𝚐 𝚒𝚏 𝚗𝚘𝚝 𝚑𝚎𝚛 𝚝𝚑𝚎𝚗 𝚗𝚘 𝚘𝚗𝚎. 𝙸'𝚖 𝚙𝚛𝚘𝚞𝚍 𝚝𝚘 𝚜𝚊𝚢 𝚝𝚑𝚊𝚝 𝚢𝚘𝚞 𝚊𝚛𝚎 𝚖𝚒𝚗𝚎 𝚏𝚘𝚛𝚎𝚟𝚎𝚛 𝚊𝚗𝚍 𝚎𝚟𝚎𝚛. 𝙸 𝙻𝙾𝚅𝙴 𝚈𝙾𝚄 𝙲𝙷𝙸𝙽𝙰𝙼𝙼𝙰 ♥🫂✨♾️. </p>
+        </div>
+    </div>
+    <p class="love-msg">Made With Love, For My Love 💕</p>
+
+    <script>
+        const showMessageButton = document.getElementById('showMessage');
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('closePopup');
+
+        showMessageButton.addEventListener('click', () => {
+            popup.classList.add('active');
+        });
+
+        closePopup.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.classList.remove('active');
+            }
+        });
+
+        document.querySelector('.btn:not(#showMessage)').addEventListener('click', () => {
+            const transition = document.querySelector('.page-transition');
+            transition.style.opacity = '0.1';
+            setTimeout(() => {
+                window.location.href = 'gallary.html'; // Change 'gallery.html' to the actual path of your gallery page
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
